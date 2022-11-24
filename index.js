@@ -1,4 +1,6 @@
 console.log("hi");
+let playerScore = 0
+let computerScore = 0
 // array for output options
 const arr = ["rock","paper","scissors"];
 // Your game is going to play against the computer, so begin with a function called getComputerChoice that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. 
@@ -22,12 +24,14 @@ function playRound(playerSelection, computerSelection) {
         // return statement
         //  `You Win! ${playerSelection} beats ${computerSelection}` = value to return 
         //  template literals
+        playerScore ++;
         return `You Win! ${playerSelection} beats ${computerSelection}`;
     }
     else if (playerSelection == computerSelection) {
         return "It's a tie";
     }
     else {
+        computerScore ++;
         return `You Lose! ${computerSelection} beats ${playerSelection}`;
     }
     
@@ -36,21 +40,19 @@ function playRound(playerSelection, computerSelection) {
 // const computerSelection = getComputerChoice();
 // console.log(playRound(playerSelection, computerSelection));
 function getPlayerChoice() {
-    let validateInput = false;
-    while(validateInput = false){
-        const playerChoice = prompt("Rock, Paper or Scissors");
-        if(playerChoice == null){
-            continue;
+    while(true){
+        // case-insensitive (so users can input rock, ROCK, RocK or any other variation), .toLowerCase()
+        const playerChoice = prompt("Rock, Paper or Scissors").toLowerCase();
+        
+        if(arr.includes(playerChoice)){
+            return playerChoice;
         }
-        const choice = playerChoice.toLowerCase();
-        if(arr.includes(choice)){
-            validateInput = true;
-            return choice;
-        }
-
+        continue;
+    }
+        
     }
     
-}
+
 function game() {
     //Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
     for (let i = 0; i < 5; i++) {
@@ -59,5 +61,11 @@ function game() {
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
      }
-}
+     if(playerScore > computerScore){
+        console.log("you are the winner");
+     }
+     else{
+        console.log("computer computer! is the winner ");
+     }
+}   
 game();
