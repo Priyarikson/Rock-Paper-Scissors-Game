@@ -1,4 +1,4 @@
-console.log("hi");
+//console.log("hi");
 let playerScore = 0
 let computerScore = 0
 // array for output options
@@ -36,36 +36,62 @@ function playRound(playerSelection, computerSelection) {
     }
     
   }
-// const playerSelection = "rock";
-// const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection));
-function getPlayerChoice() {
-    while(true){
-        // case-insensitive (so users can input rock, ROCK, RocK or any other variation), .toLowerCase()
-        const playerChoice = prompt("Rock, Paper or Scissors").toLowerCase();
-        
-        if(arr.includes(playerChoice)){
-            return playerChoice;
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('button').forEach(function(button) {
+        button.onclick = function() {
+            const playerSelection = button.dataset.value;
+            const computerSelection = getComputerChoice();
+            //using inner html to set the contents of your empty <div> to some text
+    // createElement method is used to make a new HTML element such as a <div>, button, paragraph
+            let newItem = document.createElement("div");
+    // access value
+            newItem.innerHTML = playRound(playerSelection, computerSelection);
+    
+    // document.location.appendChild(newItem);
+            document.getElementById("result").appendChild(newItem);
+            //console.log(playRound(playerSelection, computerSelection));
+  
         }
-        continue;
-    }
+    });
+ });
+
+ 
+    
+    //const computerSelection = getComputerChoice();
+    //console.log(playRound(playerSelection, computerSelection));
+  
+ //const playerSelection = "rock";
+ 
+ 
+
+//function getPlayerChoice() {
+    //while(true){
+        // case-insensitive (so users can input rock, ROCK, RocK or any other variation), .toLowerCase()
         
-    }
+        //const playerChoice = prompt("Rock, Paper or Scissors").toLowerCase();
+        
+        //if(arr.includes(playerChoice)){
+            //return playerChoice;
+        //}
+        //continue;
+    //}
+        
+    //}
     
 
-function game() {
+//function game() {
     //Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
-    for (let i = 0; i < 5; i++) {
+    //for (let i = 0; i < 5; i++) {
         // your code here!
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-     }
-     if(playerScore > computerScore){
-        console.log("you are the winner");
-     }
-     else{
-        console.log("computer computer! is the winner ");
-     }
-}   
-game();
+        //const playerSelection = getPlayerChoice();
+        //const computerSelection = getComputerChoice();
+       // alert(playRound(playerSelection, computerSelection));
+     //}
+     //if(playerScore > computerScore){
+       // alert("you are the winner");
+    // }
+     //else{
+        //alert("computer computer! is the winner ");
+     //}
+//}   
+//game();
