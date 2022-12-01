@@ -1,6 +1,6 @@
 //console.log("hi");
-let playerScore = 0
-let computerScore = 0
+let playerScore = 0;
+let computerScore = 0;
 // array for output options
 const arr = ["rock","paper","scissors"];
 // Your game is going to play against the computer, so begin with a function called getComputerChoice that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. 
@@ -18,51 +18,58 @@ function getComputerChoice(){
 // Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
 function playRound(playerSelection, computerSelection) {
     
-    if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
-    (playerSelection == 'scissors' && computerSelection == 'paper') ||
-    (playerSelection == 'paper' && computerSelection == 'rock')){
+    if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
+    (playerSelection === 'scissors' && computerSelection === 'paper') ||
+    (playerSelection === 'paper' && computerSelection === 'rock')){
         // return statement
         //  `You Win! ${playerSelection} beats ${computerSelection}` = value to return 
         //  template literals
-        playerScore ++;
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
+        playerScore++;
+        return `You Win! ${playerSelection} beats ${computerSelection}>>> `;
     }
-    else if (playerSelection == computerSelection) {
+    if (playerSelection === computerSelection) {
         return "It's a tie";
     }
     else {
-        computerScore ++;
-        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+        computerScore++;
+        return `You Lose! ${computerSelection} beats ${playerSelection}>>> `;
     }
     
+    
   }
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('button').forEach(function(button) {
-        button.onclick = function() {
-            const playerSelection = button.dataset.value;
-            const computerSelection = getComputerChoice();
-            //using inner html to set the contents of your empty <div> to some text
-    // createElement method is used to make a new HTML element such as a <div>, button, paragraph
-            let newItem = document.createElement("div");
-    // access value
-            newItem.innerHTML = playRound(playerSelection, computerSelection);
-    
-    // document.location.appendChild(newItem);
-            document.getElementById("result").appendChild(newItem);
-            //console.log(playRound(playerSelection, computerSelection));
   
-        }
-    });
- });
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('button').forEach(function(button) {
+            button.onclick = function() {
+                const computerSelection = getComputerChoice();
+                const playerSelection = button.dataset.value;
+                //using inner html to set the contents of your empty <div> to some text
+                // createElement method is used to make a new HTML element such as a <div>, button, paragraph
+                //let oneItem = document.createElement("div");
+    
+                let newItem = document.createElement("div");
+                // access value
+                //oneItem.innerHTML = `playerScore : ${playerScore}`;
+                
+                newItem.innerHTML = playRound(playerSelection, computerSelection) + `   player score = ${playerScore}` + `   computer score = ${computerScore}`;
+        
+                // document.location.appendChild(newItem);
+                //document.getElementById("result").appendChild(oneItem);
+                
+                document.getElementById("result").appendChild(newItem);
+                //console.log(playRound(playerSelection, computerSelection));
+            
+            }
+            
+            
+            
+        });
 
- 
+    });
     
-    //const computerSelection = getComputerChoice();
-    //console.log(playRound(playerSelection, computerSelection));
-  
- //const playerSelection = "rock";
- 
- 
+//const playerSelection = "rock"; 
+//const computerSelection = getComputerChoice();
+//console.log(playRound(playerSelection, computerSelection));
 
 //function getPlayerChoice() {
     //while(true){
@@ -76,7 +83,7 @@ function playRound(playerSelection, computerSelection) {
         //continue;
     //}
         
-    //}
+//}
     
 
 //function game() {
@@ -85,13 +92,13 @@ function playRound(playerSelection, computerSelection) {
         // your code here!
         //const playerSelection = getPlayerChoice();
         //const computerSelection = getComputerChoice();
-       // alert(playRound(playerSelection, computerSelection));
-     //}
-     //if(playerScore > computerScore){
-       // alert("you are the winner");
-    // }
-     //else{
-        //alert("computer computer! is the winner ");
-     //}
+        //console.log(playRound(playerSelection, computerSelection));
+    //}
+    //if(playerScore > computerScore){
+        //console.log("you are the winner");
+    //}
+    //else{
+        //console.log("computer computer! is the winner ");
+    //}
 //}   
 //game();
