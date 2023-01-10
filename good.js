@@ -43,8 +43,8 @@ function game(){
     let playerScore=0;
     let computerScore=0;
     for(let i=0; i<5; i++){
-        let playerSelection=getPlayerChoice();
-        let computerSelection=getComputerChoice();
+        const playerSelection=getPlayerChoice();
+        const computerSelection=getComputerChoice();
         console.log(playRound(playerSelection,computerSelection));
         if((checkWinner(playerSelection, computerSelection))=="player"){
             playerScore++;
@@ -68,7 +68,7 @@ function game(){
 game()
 
 function getPlayerChoice(){
-    let choice = prompt("rock,paper,scissors").toLowerCase();
+    const choice = prompt("rock,paper,scissors").toLowerCase();
     return choice;
 }
 
