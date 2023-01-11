@@ -96,9 +96,10 @@ function playRound(playerSelection, computerSelection) {
                 button1.innerHTML='REFRESH';
     document.getElementById("child").appendChild(button1);
     button1.addEventListener('click',()=>{
-       newItem.remove();
-       oItem.remove();
-       button1.remove();
+        while (child.firstChild) {
+            //The list is LIVE so it will re-index each call
+            child.removeChild(child.firstChild);
+        }
     },false);
                 playerScore = 0;
                 computerScore = 0;
@@ -111,9 +112,10 @@ function playRound(playerSelection, computerSelection) {
                     button1.innerHTML='REFRESH';
     document.getElementById("child").appendChild(button1);
     button1.addEventListener('click',()=>{
-        newItem.remove();
-       oItem.remove();
-       button1.remove();
+        while (child.firstChild) {
+            //The list is LIVE so it will re-index each call
+            child.removeChild(child.firstChild);
+        }
     },false);
                     playerScore = 0;
                     computerScore = 0;
@@ -126,9 +128,10 @@ function playRound(playerSelection, computerSelection) {
                     button1.innerHTML='REFRESH';
     document.getElementById("child").appendChild(button1);
     button1.addEventListener('click',()=>{
-        newItem.remove();
-       oItem.remove();
-       button1.remove();
+        while (child.firstChild) {
+            //The list is LIVE so it will re-index each call
+            child.removeChild(child.firstChild);
+        }
     },false);
                     playerScore = 0;
                     computerScore = 0;
