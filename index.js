@@ -27,20 +27,24 @@ function playRound(playerSelection, computerSelection) {
         //  `You Win! ${playerSelection} beats ${computerSelection}` = value to return 
         //  template literals
         count++;
+        
         playerScore = playerScore+1;
         console.log('playerScore',playerScore);
-        let player = `You Win! ${playerSelection} beats ${computerSelection}>>> `;
+        let player = `You Win! ${playerSelection} beats ${computerSelection}>>>Player Score :${playerScore}  Computer Score :${computerScore} `;
+        let displayScore = `Player Score :${playerScore}  Computer Score :${computerScore} `;
         return player;
     }
     if (playerSelection === computerSelection) {
         count++;
-        return "It's a tie";
+        //let displayScore = `Player Score :${playerScore}  Computer Score :${computerScore} `;
+        return 'its a tie';
     }
     else {
         count++;
         computerScore++;
         console.log('computerScore',computerScore);
-        let computer = `You Lose! ${computerSelection} beats ${playerSelection}>>> `;
+        let computer = `You Lose! ${computerSelection} beats ${playerSelection}>>> Player Score :${playerScore}  Computer Score :${computerScore} `;
+        let displayScore = `Player Score :${playerScore}  Computer Score :${computerScore} `;
         return computer;
     }
     
@@ -61,8 +65,8 @@ function playRound(playerSelection, computerSelection) {
             
             let playerSelection = button.dataset.value;
             let computerSelection = getComputerChoice();
-            console.log('player',playerSelection);
-            console.log('computer',computerSelection);
+            //console.log('player',playerSelection);
+            //console.log('computer',computerSelection);
            
             
         //using inner html to set the contents of your empty <div> to some text
@@ -74,11 +78,12 @@ function playRound(playerSelection, computerSelection) {
         // access value
             let result = playRound(playerSelection, computerSelection);
             
+            console.log(result);
             let newItem = document.createElement("div");
             newItem.innerHTML = result;
         // document.location.appendChild(newItem);
                 
-            document.getElementById("result").appendChild(newItem);
+            document.getElementById("child").appendChild(newItem);
             
             if(count % 5 ===0 ){
                 
@@ -86,21 +91,60 @@ function playRound(playerSelection, computerSelection) {
             
                 let oItem = document.createElement("div");
                 oItem.innerHTML = `you are the winner`;
-                document.getElementById("result").appendChild(oItem);
+                document.getElementById("child").appendChild(oItem);
+                let button1 = document.createElement('button');
+                button1.innerHTML='REFRESH';
+    document.getElementById("child").appendChild(button1);
+    button1.addEventListener('click',()=>{
+       newItem.remove();
+       oItem.remove();
+       button1.remove();
+    },false);
                 playerScore = 0;
                 computerScore = 0;
             }
-                else {
+                else if(playerScore<computerScore){
                     let oItem = document.createElement("div");
                     oItem.innerHTML = `computer computer! is the winner`;
-                    document.getElementById("result").appendChild(oItem);
+                    document.getElementById("child").appendChild(oItem);
+                    let button1 = document.createElement('button');
+                    button1.innerHTML='REFRESH';
+    document.getElementById("child").appendChild(button1);
+    button1.addEventListener('click',()=>{
+        newItem.remove();
+       oItem.remove();
+       button1.remove();
+    },false);
                     playerScore = 0;
                     computerScore = 0;
                 }
+                else{
+                    let oItem = document.createElement("div");
+                    oItem.innerHTML = `it's a tie`;
+                    document.getElementById("child").appendChild(oItem);
+                    let button1 = document.createElement('button');
+                    button1.innerHTML='REFRESH';
+    document.getElementById("child").appendChild(button1);
+    button1.addEventListener('click',()=>{
+        newItem.remove();
+       oItem.remove();
+       button1.remove();
+    },false);
+                    playerScore = 0;
+                    computerScore = 0;
+                }
+                
+       
+
         }
+        
+        
+        
+
+
     }
             
-        
+    
                 //console.log(playRound(playerSelection, computerSelection));
         });
     
@@ -109,7 +153,11 @@ function playRound(playerSelection, computerSelection) {
     
     
     
+    //const button1 = document.createElement('button').createTextNode('Refresh');
+    //document.getElementById("result").appendChild(button1);
+
     
+
     
     
     
